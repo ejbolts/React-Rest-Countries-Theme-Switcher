@@ -5,13 +5,13 @@ export default function DropDownMenu({ region, setRegion }) {
   return (
     <div className="flex flex-col">
       <button
-        className="flex items-center shadow-md p-4 pl-6 gap-5 text-sm rounded text-slate-800"
+        className="flex items-center shadow-md p-4 pl-6 gap-5 text-sm rounded text-slate-800 bg-white"
         type="button"
         onClick={() => setIsOpen((prevState) => !prevState)}
       >
         {region}
         <svg
-          className="ml-2 h-5 w-5"
+          className="ml-2 h-5 w-5 "
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 20 20"
           fill="currentColor"
@@ -25,9 +25,13 @@ export default function DropDownMenu({ region, setRegion }) {
         </svg>
       </button>
       {isOpen && (
-        <div className="flex flex-col">
+        <div className="flex flex-col shadow-md rounded mt-14 pl-6 py-3 pr-24 gap-y-2 absolute z-10 bg-white">
           {regions.map((region) => {
-            return <button key={region}>{region}</button>;
+            return (
+              <button key={region} className="text-left text-slate-800">
+                {region}
+              </button>
+            );
           })}
         </div>
       )}

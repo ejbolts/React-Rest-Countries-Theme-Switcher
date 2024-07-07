@@ -1,7 +1,7 @@
 import React from "react";
 export default function Header() {
   return (
-    <div className="flex p-5 px-16 justify-between shadow-md">
+    <div className="flex p-5 px-16 justify-between shadow-md bg-white">
       <h1 className="font-extrabold text-xl">Where in the world?</h1>
       <button
         className="flex items-center font-semibold text-slate-800 gap-2"
