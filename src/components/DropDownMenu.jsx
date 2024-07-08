@@ -9,7 +9,7 @@ export default function DropDownMenu({ region, setRegion }) {
         type="button"
         onClick={() => setIsOpen((prevState) => !prevState)}
       >
-        {region}
+        {region === "" ? "Filter by Region" : region}
         <svg
           className="ml-2 h-5 w-5 "
           xmlns="http://www.w3.org/2000/svg"
@@ -28,7 +28,11 @@ export default function DropDownMenu({ region, setRegion }) {
         <div className="flex flex-col shadow-md rounded mt-14 pl-6 py-3 pr-24 gap-y-2 absolute z-10 bg-white">
           {regions.map((region) => {
             return (
-              <button key={region} className="text-left text-slate-800">
+              <button
+                key={region}
+                className="text-left text-slate-800"
+                onClick={() => setRegion(region)}
+              >
                 {region}
               </button>
             );

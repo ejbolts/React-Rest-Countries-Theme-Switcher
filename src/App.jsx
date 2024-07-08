@@ -1,14 +1,20 @@
 import { useState } from "react";
 import CountrySearchFilter from "./components/CountrySearchFilter";
 import Header from "./components/Header";
+import CountryList from "./components/CountryList";
+import { Outlet } from "react-router-dom";
+import { CountryContext, CountryProvider } from "./CountryContext";
 
 function App() {
-  const [region, setRegion] = useState("Filter by Region");
   return (
-    <div className="bg-gray-50 min-h-screen ">
-      <Header />
-      <CountrySearchFilter region={region} setRegion={setRegion} />
-    </div>
+    <CountryProvider>
+      <div className="bg-gray-50 min-h-screen ">
+        <Header />
+        <CountrySearchFilter />
+        <CountryList />
+        <Outlet />
+      </div>
+    </CountryProvider>
   );
 }
 

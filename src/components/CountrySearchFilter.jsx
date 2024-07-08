@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import DropDownMenu from "./DropDownMenu";
+import { CountryContext } from "../CountryContext";
 
-export default function CountrySearchFilter({ region, setRegion }) {
+export default function CountrySearchFilter() {
+  const { region, setRegion, countryNameSearch, setCountryNameSearch } =
+    useContext(CountryContext);
+
   return (
     <div className="flex justify-between p-10 px-16  ">
       <div className="flex shadow-md bg-white rounded items-center">
@@ -18,6 +22,8 @@ export default function CountrySearchFilter({ region, setRegion }) {
           className="text-sm min-w-96 p-4"
           type="text"
           placeholder="Search for a country..."
+          value={countryNameSearch}
+          onChange={(e) => setCountryNameSearch(e.target.value)}
         />
       </div>
 
