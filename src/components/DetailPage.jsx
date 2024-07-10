@@ -122,7 +122,9 @@ export default function DetailPage() {
 }
 export const fetchCountryDetails = async ({ params }) => {
   const { countryName } = params;
-  const response = await fetch(`/data.json`);
+  const response = await fetch(
+    `/React-Rest-Countries-Theme-Switcher/data.json`
+  );
   const countries = await response.json();
   const countriesWithBorderNames = extractBorderCountries(countries);
 

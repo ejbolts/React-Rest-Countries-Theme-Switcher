@@ -18,7 +18,9 @@ export const CountryProvider = ({ children }) => {
   useEffect(() => {
     async function fetchCountryData() {
       try {
-        const response = await fetch("/data.json");
+        const response = await fetch(
+          "/React-Rest-Countries-Theme-Switcher/data.json"
+        );
         if (!response.ok) {
           throw new Error("Error fetching data");
         }

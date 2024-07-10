@@ -8,7 +8,7 @@ import CountryList from "./components/CountryList.jsx";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/React-Rest-Countries-Theme-Switcher/",
     element: <App />,
     children: [
       {
