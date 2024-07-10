@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { CountryContext } from "../CountryContext";
 import CountryCard from "./CountryCard";
+import CountrySearchFilter from "./CountrySearchFilter";
 
 export default function CountryList() {
   const { countries, countryNameSearch, region } = useContext(CountryContext);
@@ -39,10 +40,13 @@ export default function CountryList() {
   // Limit to the first 8 countries to fit example
   filteredCountries = filteredCountries.slice(0, 8);
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  2xl:grid-cols-5  gap-14 px-16">
-      {filteredCountries.map((country) => (
-        <CountryCard key={country.alpha3Code} country={country} />
-      ))}
-    </div>
+    <>
+      <CountrySearchFilter />
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  2xl:grid-cols-5  gap-14 px-16">
+        {filteredCountries.map((country) => (
+          <CountryCard key={country.alpha3Code} country={country} />
+        ))}
+      </div>
+    </>
   );
 }

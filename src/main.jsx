@@ -4,12 +4,17 @@ import App from "./App.jsx";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import DetailPage, { fetchCountryDetails } from "./components/DetailPage.jsx";
+import CountryList from "./components/CountryList.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     children: [
+      {
+        index: true,
+        element: <CountryList />,
+      },
       {
         path: "detailPage/:countryName",
         element: <DetailPage />,

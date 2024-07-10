@@ -7,9 +7,9 @@ export const extractBorderCountries = (countries) => {
 
     // Map over the countries to create a new array with border countries
     const countriesWithBorders = countries.map((country) => {
-        const borderCountryNames = country.borders.map((borderCode) => {
+        const borderCountryNames = country.borders ? country.borders.map((borderCode) => {
             return countryCodeToNameMap[borderCode] || borderCode;
-        });
+        }) : [];
 
         return {
             ...country,
