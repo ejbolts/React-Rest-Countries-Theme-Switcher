@@ -105,7 +105,7 @@ export default function DetailPage() {
                           ? "bg-darkModeElement text-white hover:bg-darkModeHover"
                           : "bg-white text-lightModeText hover:bg-lightModeHover"
                       }`}
-                      to={`/detailPage/${borderCountry}`}
+                      to={`/React-Rest-Countries-Theme-Switcher/detailPage/${borderCountry}`}
                       key={borderCountry}
                     >
                       {borderCountry}

@@ -1,4 +1,4 @@
-# React IP Address Tracker
+# React-Rest-Countries-Theme-Switcher
 
 This is a solution to the Rest Countries Theme Switcher project. Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
