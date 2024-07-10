@@ -1,9 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
+
 export default function DropDownMenu({ region, setRegion }) {
   const [isOpen, setIsOpen] = useState(false);
   const regions = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
+  const dropdownRef = useRef(null);
+
+  const handleClickOutside = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setIsOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col" ref={dropdownRef}>
       <button
         className="flex items-center shadow-md p-4 pl-6 gap-5 text-sm rounded text-slate-800 bg-white"
         type="button"
@@ -31,7 +47,10 @@ export default function DropDownMenu({ region, setRegion }) {
               <button
                 key={region}
                 className="text-left text-slate-800"
-                onClick={() => setRegion(region)}
+                onClick={() => {
+                  setRegion(region);
+                  setIsOpen(false);
+                }}
               >
                 {region}
               </button>
