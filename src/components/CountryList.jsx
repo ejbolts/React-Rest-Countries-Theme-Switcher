@@ -5,6 +5,7 @@ import CountrySearchFilter from "./CountrySearchFilter";
 
 export default function CountryList() {
   const { countries, countryNameSearch, region } = useContext(CountryContext);
+
   const defaultCountries = [
     "Germany",
     "United States of America",
@@ -42,7 +43,7 @@ export default function CountryList() {
   return (
     <>
       <CountrySearchFilter />
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  2xl:grid-cols-5  gap-14 px-16">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  2xl:grid-cols-5  gap-14 px-16 pb-4">
         {filteredCountries.map((country) => (
           <CountryCard key={country.alpha3Code} country={country} />
         ))}
