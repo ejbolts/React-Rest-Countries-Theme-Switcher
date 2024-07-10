@@ -46,8 +46,8 @@ export default function DetailPage() {
             }`}
           >
             <h2 className="font-extrabold text-2xl pb-2">{country.name}</h2>
-            <div className="flex md:justify-between flex-wrap">
-              <div>
+            <div className="flex max-w-lg justify-between flex-wrap ">
+              <div className="mb-8">
                 <div className="my-1">
                   <span className="font-bold text-sm">Native Name: </span>
                   <span className="text-sm">{country.nativeName}</span>
@@ -80,7 +80,7 @@ export default function DetailPage() {
                   <span className="font-bold text-sm">Currencies: </span>
                   <span className="text-sm">{country.currencies[0].name}</span>
                 </div>
-                <div className="my-1">
+                <div className="my-1 mb-8">
                   <span className="font-bold text-sm">Languages: </span>
                   {country.languages.map((language, index) => {
                     const isLast = index === country.languages.length - 1;
