@@ -1,14 +1,27 @@
+import React, { useContext } from "react";
 import Header from "./components/Header";
 import { Outlet } from "react-router-dom";
-import { CountryProvider } from "./CountryContext";
+import { CountryProvider, CountryContext } from "./CountryContext";
+
+function AppContent() {
+  const { darkMode } = useContext(CountryContext);
+
+  return (
+    <div
+      className={`min-h-screen ${
+        darkMode ? "bg-darkModeBG" : "bg-lightModeBG"
+      }`}
+    >
+      <Header />
+      <Outlet />
+    </div>
+  );
+}
 
 function App() {
   return (
     <CountryProvider>
-      <div className="bg-gray-50 min-h-screen ">
-        <Header />
-        <Outlet />
-      </div>
+      <AppContent />
     </CountryProvider>
   );
 }

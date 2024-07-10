@@ -1,14 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { extractBorderCountries } from "../util/countryBorderFinder";
+import { CountryContext } from "../CountryContext";
 
 export default function DetailPage() {
+  const { darkMode } = useContext(CountryContext);
   const country = useLoaderData();
   return (
     <div className="mt-6">
       <div className="flex flex-col">
         <Link
-          className="flex items-center justify-center p-2 shadow-md bg-white m-6 mx-16 pr-5 w-32 h-10 rounded"
+          className={`flex items-center justify-center p-2 shadow-md m-6 mx-16 pr-5 w-32 h-10 rounded ${
+            darkMode
+              ? "bg-darkModeElement text-white"
+              : " bg-white text-lightModeText  "
+          }`}
           to={".."}
         >
           <svg
@@ -19,19 +25,26 @@ export default function DetailPage() {
             id="Layer_1"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <path d="M34,256,210,80l21.21,21.2L91.4,241H478v30H91.4L231.25,410.84,210,432Z" />
+            <path
+              d="M34,256,210,80l21.21,21.2L91.4,241H478v30H91.4L231.25,410.84,210,432Z"
+              fill={`${darkMode ? "white" : "black"}`}
+            />
           </svg>
           <span>Back</span>
         </Link>
         <div className="flex items-center justify-start gap-12 lg:gap-16 my-8 mx-16 flex-wrap md:flex-nowrap">
-          <div className="min-w-96 w-auto h-auto">
+          <div className="min-w-64 w-auto h-auto">
             <img
               className="object-cover w-full max-h-80"
               src={country.flag}
               alt={`${country.name} flag`}
             />
           </div>
-          <div className="flex flex-col justify-between p-0 max-w-full md:max-w-xl md:p-8">
+          <div
+            className={`flex flex-col justify-between p-0 max-w-full md:max-w-xl md:p-8 ${
+              darkMode ? "text-white" : "text-lightModeText"
+            }`}
+          >
             <h2 className="font-extrabold text-2xl pb-2">{country.name}</h2>
             <div className="flex md:justify-between flex-wrap">
               <div>
@@ -87,7 +100,11 @@ export default function DetailPage() {
                 {country.borderCountries.map((borderCountry) => {
                   return (
                     <Link
-                      className="shadow-md white p-1 px-6 m-1"
+                      className={`shadow-md p-1 px-6 m-1 rounded ${
+                        darkMode
+                          ? "bg-darkModeElement text-white"
+                          : "bg-white text-lightModeText"
+                      }`}
                       to={`/detailPage/${borderCountry}`}
                       key={borderCountry}
                     >

@@ -37,7 +37,7 @@ export default function CountryList() {
           defaultCountries.indexOf(a.name) - defaultCountries.indexOf(b.name)
       );
   }
-  // Limit to the first 8 countries to fit example
+
   filteredCountries = filteredCountries.slice(0, 8);
   return (
     <>

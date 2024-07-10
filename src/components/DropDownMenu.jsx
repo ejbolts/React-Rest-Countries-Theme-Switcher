@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 
-export default function DropDownMenu({ region, setRegion }) {
+export default function DropDownMenu({ region, setRegion, darkMode }) {
   const [isOpen, setIsOpen] = useState(false);
   const regions = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
   const dropdownRef = useRef(null);
@@ -19,15 +19,17 @@ export default function DropDownMenu({ region, setRegion }) {
   }, []);
 
   return (
-    <div className="flex flex-col" ref={dropdownRef}>
+    <div className="relative flex flex-col" ref={dropdownRef}>
       <button
-        className="flex items-center shadow-md p-4 pl-6 gap-5 text-sm rounded text-slate-800 bg-white"
+        className={`flex items-center shadow-md p-4 pl-6 gap-5 text-sm rounded ${
+          darkMode ? "text-white bg-darkModeElement" : "text-slate-800 bg-white"
+        }`}
         type="button"
         onClick={() => setIsOpen((prevState) => !prevState)}
       >
         {region === "" ? "Filter by Region" : region}
         <svg
-          className="ml-2 h-5 w-5 "
+          className="ml-2 h-5 w-5"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 20 20"
           fill="currentColor"
@@ -41,21 +43,25 @@ export default function DropDownMenu({ region, setRegion }) {
         </svg>
       </button>
       {isOpen && (
-        <div className="flex flex-col shadow-md rounded mt-14 pl-6 py-3 pr-24 gap-y-2 absolute z-10 bg-white">
-          {regions.map((region) => {
-            return (
-              <button
-                key={region}
-                className="text-left text-slate-800"
-                onClick={() => {
-                  setRegion(region);
-                  setIsOpen(false);
-                }}
-              >
-                {region}
-              </button>
-            );
-          })}
+        <div
+          className={`flex flex-col shadow-md rounded mt-14 pl-6 py-3 pr-24 gap-y-2 absolute z-10 ${
+            darkMode
+              ? "bg-darkModeElement text-white"
+              : "bg-white text-slate-800"
+          }`}
+        >
+          {regions.map((region) => (
+            <button
+              key={region}
+              className="text-left"
+              onClick={() => {
+                setRegion(region);
+                setIsOpen(false);
+              }}
+            >
+              {region}
+            </button>
+          ))}
         </div>
       )}
     </div>

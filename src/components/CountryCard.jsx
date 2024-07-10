@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 export default function CountryCard({ country }) {
   const { darkMode } = useContext(CountryContext);
+
   return (
     <Link to={`detailPage/${country.name}`}>
       <div className="flex flex-col">
@@ -14,8 +15,14 @@ export default function CountryCard({ country }) {
             alt={`${country.name} flag`}
           />
         </div>
-        <div className="flex flex-col  bg-white p-6 shadow-md rounded-b-md">
-          <h2 className="font-bold pb-2">{country.name}</h2>
+        <div
+          className={`flex flex-col p-6 shadow-md rounded-b-md ${
+            darkMode
+              ? "bg-darkModeElement text-white"
+              : "bg-white text-lightModeText"
+          }`}
+        >
+          <h2 className="font-bold pb-2 text-lg">{country.name}</h2>
           <div>
             <span className="font-bold text-sm">Population: </span>
             <span className="text-sm">
