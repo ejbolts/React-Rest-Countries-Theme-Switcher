@@ -7,7 +7,13 @@ export default function CountryCard({ country }) {
 
   return (
     <Link to={`detailPage/${country.name}`}>
-      <div className="flex flex-col">
+      <div
+        className={`flex flex-col rounded-md ${
+          darkMode
+            ? "bg-darkModeElement text-white hover:bg-darkModeHover"
+            : "bg-white text-lightModeText hover:bg-lightModeHover "
+        }`}
+      >
         <div className="relative h-40">
           <img
             className="absolute inset-0 w-full h-full object-cover rounded-t-md"
@@ -15,13 +21,7 @@ export default function CountryCard({ country }) {
             alt={`${country.name} flag`}
           />
         </div>
-        <div
-          className={`flex flex-col p-6 shadow-md rounded-b-md ${
-            darkMode
-              ? "bg-darkModeElement text-white"
-              : "bg-white text-lightModeText"
-          }`}
-        >
+        <div className={`flex flex-col p-6 shadow-md rounded-b-md `}>
           <h2 className="font-bold pb-2 text-lg">{country.name}</h2>
           <div>
             <span className="font-bold text-sm">Population: </span>

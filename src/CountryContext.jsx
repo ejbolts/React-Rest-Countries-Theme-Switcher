@@ -6,7 +6,14 @@ export const CountryProvider = ({ children }) => {
   const [region, setRegion] = useState("");
   const [countries, setCountries] = useState([]);
   const [countryNameSearch, setCountryNameSearch] = useState("");
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(() => {
+    const savedDarkMode = localStorage.getItem("darkMode");
+    return savedDarkMode !== null ? JSON.parse(savedDarkMode) : false;
+  });
+
+  useEffect(() => {
+    localStorage.setItem("darkMode", JSON.stringify(darkMode));
+  }, [darkMode]);
 
   useEffect(() => {
     async function fetchCountryData() {

@@ -22,7 +22,9 @@ export default function DropDownMenu({ region, setRegion, darkMode }) {
     <div className="relative flex flex-col" ref={dropdownRef}>
       <button
         className={`flex items-center shadow-md p-4 pl-6 gap-5 text-sm rounded ${
-          darkMode ? "text-white bg-darkModeElement" : "text-slate-800 bg-white"
+          darkMode
+            ? "bg-darkModeElement text-white hover:bg-darkModeHover"
+            : "bg-white text-lightModeText hover:bg-lightModeHover "
         }`}
         type="button"
         onClick={() => setIsOpen((prevState) => !prevState)}
@@ -44,7 +46,7 @@ export default function DropDownMenu({ region, setRegion, darkMode }) {
       </button>
       {isOpen && (
         <div
-          className={`flex flex-col shadow-md rounded mt-14 pl-6 py-3 pr-24 gap-y-2 absolute z-10 ${
+          className={`flex flex-col shadow-md rounded mt-14  py-2 absolute z-10 ${
             darkMode
               ? "bg-darkModeElement text-white"
               : "bg-white text-slate-800"
@@ -53,7 +55,11 @@ export default function DropDownMenu({ region, setRegion, darkMode }) {
           {regions.map((region) => (
             <button
               key={region}
-              className="text-left"
+              className={`text-left pl-6 py-1 pr-24 ${
+                darkMode
+                  ? "bg-darkModeElement text-white hover:bg-darkModeHover"
+                  : "bg-white text-lightModeText hover:bg-lightModeHover "
+              }`}
               onClick={() => {
                 setRegion(region);
                 setIsOpen(false);

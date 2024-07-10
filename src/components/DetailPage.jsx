@@ -10,10 +10,10 @@ export default function DetailPage() {
     <div className="mt-6">
       <div className="flex flex-col">
         <Link
-          className={`flex items-center justify-center p-2 shadow-md m-6 mx-16 pr-5 w-32 h-10 rounded ${
+          className={`flex items-center justify-center p-2 shadow-md m-6 mx-16 pr-5 w-32 h-10 rounded  ${
             darkMode
-              ? "bg-darkModeElement text-white"
-              : " bg-white text-lightModeText  "
+              ? "bg-darkModeElement text-white hover:bg-darkModeHover"
+              : "bg-white text-lightModeText hover:bg-lightModeHover "
           }`}
           to={".."}
         >
@@ -102,8 +102,8 @@ export default function DetailPage() {
                     <Link
                       className={`shadow-md p-1 px-6 m-1 rounded ${
                         darkMode
-                          ? "bg-darkModeElement text-white"
-                          : "bg-white text-lightModeText"
+                          ? "bg-darkModeElement text-white hover:bg-darkModeHover"
+                          : "bg-white text-lightModeText hover:bg-lightModeHover"
                       }`}
                       to={`/detailPage/${borderCountry}`}
                       key={borderCountry}

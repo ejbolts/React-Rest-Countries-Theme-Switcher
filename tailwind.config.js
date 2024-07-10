@@ -14,6 +14,8 @@ export default {
         darkModeElement: 'hsl(209, 23%, 22%)',
         lightModeText: 'hsl(200, 15%, 8%)',
         lightModeBG: 'hsl(0, 0%, 98%)',
+        lightModeHover: 'hsl(0, 0%, 95%)',
+        darkModeHover: 'hsl(209, 23%, 25%)',
       }
     },
   },
