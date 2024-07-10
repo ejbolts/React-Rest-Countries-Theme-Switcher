@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 
 export default function DropDownMenu({ region, setRegion, darkMode }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeRegion, setActiveRegion] = useState(region);
   const regions = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
   const dropdownRef = useRef(null);
 
@@ -18,6 +19,17 @@ export default function DropDownMenu({ region, setRegion, darkMode }) {
     };
   }, []);
 
+  const handleRegionClick = (region) => {
+    if (activeRegion === region) {
+      setActiveRegion("");
+      setRegion("");
+    } else {
+      setActiveRegion(region);
+      setRegion(region);
+    }
+    setIsOpen(false);
+  };
+
   return (
     <div className="relative flex flex-col" ref={dropdownRef}>
       <button
@@ -29,7 +41,7 @@ export default function DropDownMenu({ region, setRegion, darkMode }) {
         type="button"
         onClick={() => setIsOpen((prevState) => !prevState)}
       >
-        {region === "" ? "Filter by Region" : region}
+        {activeRegion === "" ? "Filter by Region" : activeRegion}
         <svg
           className="ml-2 h-5 w-5"
           xmlns="http://www.w3.org/2000/svg"
@@ -56,14 +68,15 @@ export default function DropDownMenu({ region, setRegion, darkMode }) {
             <button
               key={region}
               className={`text-left pl-6 py-1 pr-24 ${
-                darkMode
+                activeRegion === region
+                  ? darkMode
+                    ? "bg-darkModeHover text-white"
+                    : "bg-lightModeHover text-lightModeText"
+                  : darkMode
                   ? "bg-darkModeElement text-white hover:bg-darkModeHover"
                   : "bg-white text-lightModeText hover:bg-lightModeHover "
               }`}
-              onClick={() => {
-                setRegion(region);
-                setIsOpen(false);
-              }}
+              onClick={() => handleRegionClick(region)}
             >
               {region}
             </button>
