@@ -1,11 +1,13 @@
 import React, { useContext } from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useParams } from "react-router-dom";
 import { extractBorderCountries } from "../util/countryBorderFinder";
 import { CountryContext } from "../CountryContext";
 
 export default function DetailPage() {
-  const { darkMode } = useContext(CountryContext);
-  const country = useLoaderData();
+  const { darkMode, countries } = useContext(CountryContext);
+  const { countryName } = useParams();
+  const country = countries.find((country) => country.name === countryName);
+
   return (
     <div className="mt-6">
       <div className="flex flex-col">
@@ -120,14 +122,14 @@ export default function DetailPage() {
     </div>
   );
 }
-export const fetchCountryDetails = async ({ params }) => {
-  const { countryName } = params;
-  const response = await fetch(
-    `/React-Rest-Countries-Theme-Switcher/data.json`
-  );
-  const countries = await response.json();
-  const countriesWithBorderNames = extractBorderCountries(countries);
+// export const fetchCountryDetails = async ({ params }) => {
+//   const { countryName } = params;
+//   const response = await fetch(
+//     `/React-Rest-Countries-Theme-Switcher/data.json`
+//   );
+//   const countries = await response.json();
+//   const countriesWithBorderNames = extractBorderCountries(countries);
 
-  const country = countriesWithBorderNames.find((c) => c.name === countryName);
-  return country;
-};
+//   const country = countriesWithBorderNames.find((c) => c.name === countryName);
+//   return country;
+// };
