@@ -2,6 +2,9 @@
 
 This is my solution to the Rest Countries Theme Switcher project. Frontend Mentor challenges help you improve your coding skills by building projects.
 
+Development requires Node.js 20 or newer. Install dependencies with `npm ci`,
+then run `npm run dev`. Run checks with `npm run lint` and `npm run build`.
+
 ## Table of contents
 
 - [Overview](#overview)
